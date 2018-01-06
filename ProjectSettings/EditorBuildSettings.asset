@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Splash.unity
+    guid: ae5cf9daf49b0cc41befbb7cd264e2ed
+  - enabled: 1
+    path: Assets/Alien Planet.unity
+    guid: efb362f636cd42f4eab2597146ee7630
