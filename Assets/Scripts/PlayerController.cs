@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-public class Player : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
-    [Tooltip("In ms^-1")] [SerializeField] float speed = 10f;
+    [Header("General")]
+    [Tooltip("In ms^-1")] [SerializeField] float controlSpeed = 10f;
     [Tooltip("In m")] [SerializeField] float shipXRange = 5f;
     [Tooltip("In m")] [SerializeField] float shipYRange = 3.5f;
+
+    [Header("Screen-position Based")]
     [SerializeField] float positionPitchFactor = -5f;
-    [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float positionYawFactor = 5f;
+
+    [Header("Control-throw Based")]
+    [SerializeField] float controlPitchFactor = -20f;
     [SerializeField] float controlRollFactor = -20f;
 
     float xThrow;
     float yThrow;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update ()
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
     private void Horizontal()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
-        float xOffset = xThrow * speed * Time.deltaTime;
+        float xOffset = xThrow * controlSpeed * Time.deltaTime;
         float rawXPos = transform.localPosition.x + xOffset;
         float clampedXPos = Mathf.Clamp(rawXPos, -shipXRange, +shipXRange);
         transform.localPosition = new Vector3(
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
     private void Vertical()
     {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
-        float yOffset = yThrow * speed * Time.deltaTime;
+        float yOffset = yThrow * controlSpeed * Time.deltaTime;
         float rawYPos = transform.localPosition.y + yOffset;
         float clampedYPos = Mathf.Clamp(rawYPos, -shipYRange, +shipYRange);
         transform.localPosition = new Vector3(
@@ -64,4 +64,5 @@ public class Player : MonoBehaviour {
 
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
+
 }   
