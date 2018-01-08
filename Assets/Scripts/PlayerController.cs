@@ -20,13 +20,23 @@ public class PlayerController : MonoBehaviour {
 
     float xThrow;
     float yThrow;
+
+    bool isControlEnabled = true;
 	
 	// Update is called once per frame
 	void Update ()
     {
-        Horizontal();
-        Vertical();
-        Rotation();
+        if (isControlEnabled)
+        {
+            Horizontal();
+            Vertical();
+            Rotation();
+        }
+    }
+
+    void OnPlayerDeath()    // Call by string reference
+    {
+
     }
 
     private void Horizontal()

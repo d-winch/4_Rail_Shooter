@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 65684161324203594}
   - component: {fileID: 54858719639087506}
   - component: {fileID: 114823149288077394}
+  - component: {fileID: 114445138505538198}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -132,7 +133,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251662649332070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.06, z: -8.04}
+  m_LocalPosition: {x: 0, y: -0.11100006, z: -0.40100002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4897098184321920}
@@ -190,7 +191,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -201,7 +202,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1648023227616428}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4.0626006, y: 0.96831894, z: 3.306026}
@@ -286,6 +287,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114445138505538198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1648023227616428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97017d318e4d685408a5e6c51da25e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114823149288077394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -297,12 +309,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57265f17da41c6e4dba0796261421acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  controlSpeed: 10
   shipXRange: 8.5
   shipYRange: 5.8
   positionPitchFactor: -5
-  controlPitchFactor: -20
   positionYawFactor: 5
+  controlPitchFactor: -20
   controlRollFactor: -20
 --- !u!198 &198006619531236030
 ParticleSystem:
@@ -316,7 +328,7 @@ ParticleSystem:
   stopAction: 0
   looping: 0
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -364,7 +376,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1332396671
+  randomSeed: 2077585899
   InitialModule:
     serializedVersion: 3
     enabled: 1
