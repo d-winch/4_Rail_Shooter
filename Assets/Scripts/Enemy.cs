@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ public class Enemy : MonoBehaviour {
 
     [SerializeField] GameObject deathFX;
     [SerializeField] Transform parent;
+    [SerializeField] int enemyPoints = 10;
+    [SerializeField] int hits = 10;
 
     ScoreBoard scoreBoard;
-    int enemyPoints = 10;
 
 	// Use this for initialization
 	void Start ()
@@ -30,9 +32,24 @@ public class Enemy : MonoBehaviour {
 
     void OnParticleCollision(GameObject other)
     {
+        ProcessHit();
+        if (hits <= 0)
+        {
+            KillEnemy();
+        }
+    }
+
+    private void ProcessHit()
+    {
+        scoreBoard.ScoreHit(enemyPoints);
+        hits--;
+    }
+
+    private void KillEnemy()
+    {
         GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
         Destroy(gameObject);
         fx.transform.parent = parent;
-        scoreBoard.ScoreHit(enemyPoints);
+        scoreBoard.ScoreHit(enemyPoints * 10);
     }
 }
